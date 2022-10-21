@@ -13,4 +13,5 @@ export const OutletContainer = styled.div`
   max-width: 54rem;
 
   margin-top: -5.5rem;
+  padding-bottom: 2rem;
 `

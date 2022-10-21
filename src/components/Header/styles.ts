@@ -11,8 +11,7 @@ export const HeaderContainer = styled.header`
 
   background: linear-gradient(
     ${props => props.theme["base-profile"]} 25%,
-    ${props => props.theme.blue+'18'} 65%,
-    ${props => props.theme["base-profile"]} 90%
+    ${props => props.theme.blue+'18'} 65%
   );
 `
 export const LeftBackground = styled.img`

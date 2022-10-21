@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BlogContainer = styled.div``
 
-export const Profile = styled.div`
+export const ProfileContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 2rem;
@@ -22,7 +22,8 @@ export const Profile = styled.div`
 `
 
 export const ProfileContent = styled.div`
-  display: flex;  
+  display: flex;
+  flex-direction: column;
   width: 100%;
 
   header {
@@ -39,13 +40,92 @@ export const ProfileContent = styled.div`
     }
 
     button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
       font-size: 0.75rem;
       font-weight: bold;
 
       color: ${props => props.theme.blue};
 
-      border: 0;
+      border: 1px transparent;
       background: transparent;
+      
+      transition: border 0.5s;
+
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid ${props => props.theme.blue};;
+      }
     }
-}
+  }
+
+  section {
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+
+    max-height: 5.5rem;
+  }
+
+  footer {
+    display: flex;
+    gap: 1.5rem;
+
+    color: ${props => props.theme["base-subtitle"]};
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      svg {
+        height: 1.125rem;
+        color: ${props => props.theme["base-label"]};
+      }
+    }
+  }
+`
+
+export const SearchContainer = styled.div`
+  padding-bottom: 3rem;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 4.75rem;
+    padding-bottom: 0.75rem;
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: ${props => props.theme["base-subtitle"]};
+    }
+
+    span {
+      font-size: 0.875rem;
+      color: ${props => props.theme["base-span"]};
+    }
+  }
+
+  form > input {
+    width: 100%;
+    height: 3.125rem;
+
+    padding: 0.75rem 1rem;
+    
+    border-radius: 6px;
+    border: 1px solid ${props => props.theme["base-border"]};
+
+    color: ${props => props.theme["base-text"]};
+    background: ${props => props.theme["base-input"]};
+  }
+`
+
+export const PostList = styled.div`
+  display: flex;
+  gap: 2rem;
+
+  flex-wrap: wrap;
 `
