@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const BlogContainer = styled.div``
-
 export const ProfileContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -37,27 +35,6 @@ export const ProfileContent = styled.div`
       font-weight: bold;
 
       color: ${props => props.theme["base-title"]};
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      font-size: 0.75rem;
-      font-weight: bold;
-
-      color: ${props => props.theme.blue};
-
-      border: 1px transparent;
-      background: transparent;
-      
-      transition: border 0.5s;
-
-      &:hover {
-        cursor: pointer;
-        border-bottom: 1px solid ${props => props.theme.blue};;
-      }
     }
   }
 

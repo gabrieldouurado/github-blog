@@ -3,18 +3,19 @@ import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from '@fortawesome/
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
-import { BlogContainer, PostList, ProfileContainer, ProfileContent, SearchContainer } from "./styles";
+import { PostList, ProfileContainer, ProfileContent, SearchContainer } from "./styles";
 import { PostResume } from './components/PostResume';
+import { TextButton } from '../../components/TextButton';
 
 export function Blog() {
   return (
-    <BlogContainer>
+    <div>
       <ProfileContainer>
         <img src="https://github.com/gabrieldouurado.png" alt="" />
         <ProfileContent>
           <header>
             <span>João Gabriel</span>
-            <button>GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></button>
+            <TextButton>GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></TextButton>
           </header>
 
           <section>
@@ -57,6 +58,6 @@ export function Blog() {
         <PostResume />
 
       </PostList>
-    </BlogContainer>
+    </div>
   )
 }
