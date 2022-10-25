@@ -42,7 +42,7 @@ export const ProfileContent = styled.div`
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
 
-    max-height: 5.5rem;
+    height: 5.5rem;
   }
 
   footer {

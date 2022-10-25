@@ -1,15 +1,36 @@
+import { formatDistanceToNow } from "date-fns";
+import ptBR from 'date-fns/locale/pt-BR';
+import { sliceTextAccordinglyLength } from "../../../../utils/formatters";
 import { PostResumeContainer } from "./styles";
 
-export function PostResume(){
+interface Issue {
+  pageUrl?: string
+  title: string
+  content: string
+  createdAt: string
+}
+
+export function PostResume({
+  pageUrl,
+  title,
+  content,
+  createdAt }: Issue) {
+
+  const publishedDateFormatted = formatDistanceToNow(new Date(createdAt), {
+    locale: ptBR,
+    addSuffix: true
+  })
+
+
+
   return (
     <PostResumeContainer>
       <header>
-        <h2>JavaScript data types and data structures</h2>
-        <span>há 1 dia</span>
+        <h2>{sliceTextAccordinglyLength(title, 50)}</h2>
+        <span>{publishedDateFormatted}</span>
       </header>
       <span>
-        Programming languages all have built-in data structures, but these often differ from one language to another. 
-        This article attempts to list the built-in data structures available in... 
+        {sliceTextAccordinglyLength(content, 182)}
       </span>
     </PostResumeContainer>
   )

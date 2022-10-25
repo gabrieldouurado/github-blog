@@ -10,13 +10,20 @@ export const TextButtonContainer = styled.button`
 
   color: ${props => props.theme.blue};
 
-  border: 1px transparent;
+  border: 1px solid transparent;
   background: transparent;
   
-  transition: border 0.5s;
+  transition: border 0.3s;
 
   &:hover {
     cursor: pointer;
     border-bottom: 1px solid ${props => props.theme.blue};;
+  }
+
+  a {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 `

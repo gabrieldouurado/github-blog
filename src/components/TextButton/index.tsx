@@ -3,11 +3,12 @@ import { TextButtonContainer } from "./styles";
 
 interface TextButtonProps {
   children: ReactNode
+  onClick?: () => void
 }
 
-export function TextButton({ children }: TextButtonProps) {
+export function TextButton({ children, onClick }: TextButtonProps) {
   return (
-    <TextButtonContainer>
+    <TextButtonContainer onClick={onClick}>
       {children}
     </TextButtonContainer>
   )
