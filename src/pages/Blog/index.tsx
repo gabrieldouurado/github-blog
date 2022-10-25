@@ -3,14 +3,13 @@ import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from '@fortawesome/
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 
-import { PostList, ProfileContainer, ProfileContent, SearchContainer } from "./styles";
+import { PostList, ProfileContainer, ProfileContent } from "./styles";
 import { PostResume } from './components/PostResume';
 import { TextButton } from '../../components/TextButton';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { api } from '../../lib/axios';
-
-const GIT_USER = 'gabrieldouurado'
-const GIT_REPO = 'github-blog'
+import { PostContext } from '../../contexts/PostContext';
+import { SearchPosts } from './components/SearchPosts';
 
 interface UserInfos {
   nick: string
@@ -22,18 +21,10 @@ interface UserInfos {
   pageUrl: string
 }
 
-interface RepoIssues {
-  pageUrl: string
-  title: string
-  content: string
-  createdAt: string
-}
-
 export function Blog() {
   const [userInfos, setUserInfos] = useState<UserInfos>()
-  const [issues, setIssues] = useState<RepoIssues[]>([])
-  const [totalOfIssues, setTotalOfIssues] = useState(0)
-
+  const { GIT_USER, posts } = useContext(PostContext)
+  
   const fetchUserInfos = useCallback(async (user: string) => {
     const response = await api.get(`/users/${user}`)
 
@@ -42,29 +33,8 @@ export function Blog() {
     setUserInfos({ nick, name, company, bio, avatarUrl, followers, pageUrl })
   }, [])
 
-  const fetchRepoIssues = useCallback(async (user: string, repo: string, query: string) => {
-    const response = await api.get(`/search/issues?q=${query}%20repo:${user}/${repo}`)
-
-    const { items, total_count } = response.data
-
-    let repoIssues: RepoIssues[] = []
-
-    items.forEach((issue: any) => {
-      repoIssues.push({
-        pageUrl: issue.url,
-        title: issue.title,
-        content: issue.body,
-        createdAt: issue.created_at,
-      })
-    })
-
-    setIssues(repoIssues)
-    setTotalOfIssues(total_count)
-  }, [])
-
   useEffect(() => {
     fetchUserInfos(GIT_USER)
-    fetchRepoIssues(GIT_USER, GIT_REPO, '')
   }, [])
 
   return (
@@ -106,26 +76,17 @@ export function Blog() {
         </ProfileContent>
       </ProfileContainer>
 
-      <SearchContainer>
-        <header>
-          <h2>Publicações</h2>
-          <span>{totalOfIssues} publicações</span>
-        </header>
-
-        <form action="">
-          <input type="text" placeholder='Buscar Conteúdo' />
-        </form>
-      </SearchContainer>
+      <SearchPosts />
 
       <PostList>
         {
-          issues.map(issue => {
+          posts.map(post => {
             return (
               <PostResume
-                key={issue.title} 
-                title={issue.title}
-                content={issue.content}
-                createdAt={issue.createdAt}
+                key={post.title} 
+                title={post.title}
+                content={post.content}
+                createdAt={post.createdAt}
               />
             )
           })

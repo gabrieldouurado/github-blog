@@ -3,7 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { sliceTextAccordinglyLength } from "../../../../utils/formatters";
 import { PostResumeContainer } from "./styles";
 
-interface Issue {
+interface Post {
   pageUrl?: string
   title: string
   content: string
@@ -14,14 +14,12 @@ export function PostResume({
   pageUrl,
   title,
   content,
-  createdAt }: Issue) {
+  createdAt }: Post) {
 
   const publishedDateFormatted = formatDistanceToNow(new Date(createdAt), {
     locale: ptBR,
     addSuffix: true
   })
-
-
 
   return (
     <PostResumeContainer>
