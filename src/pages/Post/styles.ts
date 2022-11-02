@@ -53,6 +53,4 @@ export const PostHeaderInfos = styled.div`
 
 export const PostContent = styled.div`
   padding: 2.5rem 2rem;
-
-  border: 1px solid white;
 `

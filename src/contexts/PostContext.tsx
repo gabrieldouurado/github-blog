@@ -2,12 +2,13 @@ import { createContext, ReactNode, useCallback, useEffect, useState } from "reac
 import { api } from "../lib/axios";
 
 const GIT_USER = 'gabrieldouurado' as const
-const GIT_REPO = 'github-blog' as const 
+const GIT_REPO = 'github-blog' as const
 
 interface Post {
   pageUrl?: string
   title: string
   content: string
+  comments: number
   createdAt: string
 }
 
@@ -18,6 +19,7 @@ interface PostContextType {
   activePost?: Post
   totalOfPosts: number
   fetchRepoPosts: (query: string) => Promise<void>
+  activatePost: (post: Post) => void
 }
 
 export const PostContext = createContext({} as PostContextType)
@@ -38,12 +40,13 @@ export function PostProvider({ children }: PostProviderProps) {
 
     let repoPosts: Post[] = []
 
-    items.forEach((issue: any) => {
+    items.forEach((post: any) => {
       repoPosts.push({
-        pageUrl: issue.url,
-        title: issue.title,
-        content: issue.body,
-        createdAt: issue.created_at,
+        pageUrl: post.html_url,
+        title: post.title,
+        content: post.body,
+        comments: post.comments,
+        createdAt: post.created_at,
       })
     })
 
@@ -55,6 +58,12 @@ export function PostProvider({ children }: PostProviderProps) {
     fetchRepoPosts('')
   }, [])
 
+  function activatePost(post: Post) {
+    const postJSON = JSON.stringify(post)
+    localStorage.setItem('@github-blog:active-post-1.0.0', postJSON)
+    setActivePost(post)
+  }
+
   return (
     <PostContext.Provider value={{
       GIT_USER,
@@ -62,7 +71,8 @@ export function PostProvider({ children }: PostProviderProps) {
       posts,
       activePost,
       totalOfPosts,
-      fetchRepoPosts
+      fetchRepoPosts,
+      activatePost
     }}>
       {children}
     </PostContext.Provider>

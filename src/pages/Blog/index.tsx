@@ -37,6 +37,7 @@ export function Blog() {
     fetchUserInfos(GIT_USER)
   }, [])
 
+
   return (
     <div>
       <ProfileContainer>
@@ -86,7 +87,9 @@ export function Blog() {
                 key={post.title} 
                 title={post.title}
                 content={post.content}
+                comments={post.comments}
                 createdAt={post.createdAt}
+                pageUrl={post.pageUrl}
               />
             )
           })
