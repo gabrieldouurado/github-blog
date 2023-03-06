@@ -1,0 +1,11 @@
+{
+  "project-name": "Github Blog",
+  "little-description": "Blog que realiza chamadas em um repositório do Github",
+  "full-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aspernatur architecto fugiat doloribus natus maxime voluptatibus soluta cumque mollitia possimus vitae adipisci quo rerum, veritatis eligendi illo. Ullam, error quasi!",
+  "screenshots": [
+    {
+      "name": "pagina-inicial",
+      "path": "/assets/pagina-inicial.png"
+    }
+  ]
+}
