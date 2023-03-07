@@ -1,11 +1,12 @@
 {
   "project-name": "Github Blog",
-  "little-description": "Blog que realiza chamadas em um repositório do Github",
-  "full-description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem aspernatur architecto fugiat doloribus natus maxime voluptatibus soluta cumque mollitia possimus vitae adipisci quo rerum, veritatis eligendi illo. Ullam, error quasi!",
+  "little-description": "Blog que busca por issues em repositório do Github",
+  "full-description": "O projeto foi construido com ReactJS e teve como objetivo a prática do consumo de APIs de tercerios. A API escolhida foi a do Github. A página busca issues em repositórios e apresenta esses repositórios no blog. Foram usadas as seguintes bibliotecas react-hook-form para criação dos formuários, zod para validação, react-router-dom para a navegação, styled-components para estilização e date-fns para lidar com as datas. Também foram usadados patterns como ContextAPI e os hooks do próprio react.",
   "screenshots": [
     {
       "name": "pagina-inicial",
       "path": "/assets/pagina-inicial.png"
     }
-  ]
+  ],
+  "stack": ["ReactJS", "Typecript", "React Hook Form", "Zod", "React Router DOM", "Styled-components"]
 }
