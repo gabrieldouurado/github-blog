@@ -6,7 +6,12 @@
     {
       "name": "pagina-inicial",
       "path": "/assets/pagina-inicial.png"
+    },
+    {
+      "name": "pagina-01",
+      "path": "/assets/pagina-01.png"
     }
   ],
-  "stack": ["ReactJS", "Typecript", "React Hook Form", "Zod", "React Router DOM", "Styled-components"]
+  "stack": ["ReactJS", "Typecript", "React Hook Form", "Zod", "React Router DOM", "Styled-components"],
+  "tags": ["frontend"]
 }
